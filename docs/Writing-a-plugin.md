@@ -63,12 +63,12 @@ Make sure to get a prerelease if you are writing a plugin for a dev release of t
 2. Click `Manage NuGet Packages`.
 3. Click `Browse`.
 4. Next to the search bar, enable `Include prerelease`.
-5. Search for `Impostor.Api`.
-6. Click the `Impostor.Api` result and press install on the right side.
+5. Search for `Impostors.Ga.Api`.
+6. Click the `Impostors.Ga.Api` result and press install on the right side.
 
 ### Dotnet CLI
 
-> Make sure to grab the latest (pre-)release version from NuGet [here](https://www.nuget.org/packages/Impostor.Api).
+> Make sure to grab the latest (pre-)release version from NuGet [here](https://www.nuget.org/packages/Impostors.Ga.Api).
 
 1. Open your project folder in command prompt / bash.
 2. Run `dotnet add package Impostor.Api -v "1.2.0-ci.58"`.
