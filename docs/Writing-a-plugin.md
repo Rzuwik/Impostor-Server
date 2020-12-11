@@ -54,7 +54,7 @@ You only have to follow the instructions of one below.
 
 ### Quick
 
-Install the `Impostor.Api` NuGet package.  
+Install the `Impostors.Ga.Api` NuGet package.  
 Make sure to get a prerelease if you are writing a plugin for a dev release of the server.
 
 ### Visual Studio
