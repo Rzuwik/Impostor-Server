@@ -33,7 +33,7 @@ namespace Impostor.Server.Plugins
 
             var matcher = new Matcher(StringComparison.OrdinalIgnoreCase);
             matcher.AddInclude("*.dll");
-            matcher.AddExclude("Impostor.Api.dll");
+            matcher.AddExclude("Impostoor.Api.dll");
 
             RegisterAssemblies(pluginPaths, matcher, assemblyInfos, true);
             RegisterAssemblies(libraryPaths, matcher, assemblyInfos, false);
@@ -44,9 +44,9 @@ namespace Impostor.Server.Plugins
             {
                 Logger.Verbose("Loading assembly {0} v{1}", name.Name, name.Version);
 
-                // Some plugins may be referencing another Impostor.Api version and try to load it.
+                // Some plugins may be referencing another Impostoor.Api version and try to load it.
                 // We want to only use the one shipped with the server.
-                if (name.Name.Equals("Impostor.Api"))
+                if (name.Name.Equals("Impostoor.Api"))
                 {
                     return typeof(IPlugin).Assembly;
                 }

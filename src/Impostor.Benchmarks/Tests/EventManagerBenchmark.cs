@@ -1,7 +1,7 @@
 ﻿// using System.Threading.Tasks;
 // using BenchmarkDotNet.Attributes;
-// using Impostor.Api.Events;
-// using Impostor.Api.Events.Managers;
+// using Impostoor.Api.Events;
+// using Impostoor.Api.Events.Managers;
 // using Impostor.Server.Events;
 // using Microsoft.Extensions.DependencyInjection;
 //

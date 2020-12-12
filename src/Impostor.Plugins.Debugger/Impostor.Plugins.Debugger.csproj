@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Impostor.Api\Impostor.Api.csproj" />
+      <Folder Include="Properties\" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Properties\" />
+      <ProjectReference Include="..\Impostoor.Api\Impostoor.Api.csproj" />
     </ItemGroup>
 
 </Project>

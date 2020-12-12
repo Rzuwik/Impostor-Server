@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\Impostor.Api\Impostor.Api.csproj" />
+    <ProjectReference Include="..\Impostoor.Api\Impostoor.Api.csproj" />
   </ItemGroup>
 
 </Project>
