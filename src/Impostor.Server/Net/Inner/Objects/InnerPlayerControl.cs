@@ -48,6 +48,8 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public override async ValueTask HandleRpc(ClientPlayer sender, ClientPlayer? target, RpcCalls call, IMessageReader reader)
         {
+            _logger.LogInformation(call.ToString());
+            _logger.LogInformation(call.GetType().Name);
             switch (call)
             {
                 // Play an animation.
@@ -332,6 +334,9 @@ namespace Impostor.Server.Net.Inner.Objects
                         throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.StartMeeting)} to a specific player instead of broadcast");
                     }
 
+                    _logger.LogInformation("test");
+                    _logger.LogInformation(reader.ToString());
+
                     // deadBodyPlayerId == byte.MaxValue -- means emergency call by button
                     var deadBodyPlayerId = reader.ReadByte();
                     var deadPlayer = deadBodyPlayerId != byte.MaxValue
@@ -374,6 +379,28 @@ namespace Impostor.Server.Net.Inner.Objects
                     var playerId = reader.ReadByte();
                     var chatNote = (ChatNoteType)reader.ReadByte();
                     break;
+                }
+
+                case RpcCalls.EnterVent:
+                {
+                        if (!sender.IsOwner(this))
+                        {
+                            throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.SetPet)} to an unowned {nameof(InnerPlayerControl)}");
+                        }
+
+                        if (target != null)
+                        {
+                            throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.SetPet)} to a specific player instead of broadcast");
+                        }
+
+                        var vent = reader.ReadByte();
+
+                        _logger.LogInformation(reader.ToString());
+
+                        _logger.LogInformation(vent.ToString());
+
+                        await _eventManager.CallAsync(new PlayerEnterVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this));
+                        break;
                 }
 
                 case RpcCalls.SetPet:
