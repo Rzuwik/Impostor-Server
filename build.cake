@@ -135,7 +135,7 @@ Task("Build")
             ImpostorPublish("Impostor-Server", "./src/Impostor.Server/Impostor.Server.csproj", "linux-arm64", true);
 
             // API.
-            DotNetCorePack("./src/Impostor.Api/Impostor.Api.csproj", new DotNetCorePackSettings {
+            DotNetCorePack("./src/Impostoor.Api/Impostoor.Api.csproj", new DotNetCorePackSettings {
                 Configuration = configuration,
                 OutputDirectory = buildDir,
                 IncludeSource = true,

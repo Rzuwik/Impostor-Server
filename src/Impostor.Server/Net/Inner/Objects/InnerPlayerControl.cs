@@ -334,8 +334,8 @@ namespace Impostor.Server.Net.Inner.Objects
                         throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.StartMeeting)} to a specific player instead of broadcast");
                     }
 
-                    _logger.LogInformation("test");
-                    _logger.LogInformation(reader.ToString());
+                    //_logger.LogInformation("test");
+                    //_logger.LogInformation(reader.ToString());
 
                     // deadBodyPlayerId == byte.MaxValue -- means emergency call by button
                     var deadBodyPlayerId = reader.ReadByte();
@@ -383,24 +383,26 @@ namespace Impostor.Server.Net.Inner.Objects
 
                 case RpcCalls.EnterVent:
                 {
-                        if (!sender.IsOwner(this))
-                        {
-                            throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.SetPet)} to an unowned {nameof(InnerPlayerControl)}");
-                        }
+                    if (!sender.IsOwner(this))
+                    {
+                        Console.WriteLine("a");
+                        throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.EnterVent)} to an unowned {nameof(InnerPlayerControl)}");
+                    }
 
-                        if (target != null)
-                        {
-                            throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.SetPet)} to a specific player instead of broadcast");
-                        }
+                    if (target != null)
+                    {
+                        Console.WriteLine("b");
+                        throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.EnterVent)} to a specific player instead of broadcast");
+                    }
 
-                        var vent = reader.ReadByte();
+                    var vent = reader.ReadByte();
 
-                        _logger.LogInformation(reader.ToString());
+                    _logger.LogInformation(reader.ToString());
 
-                        _logger.LogInformation(vent.ToString());
+                    _logger.LogInformation(vent.ToString());
 
-                        await _eventManager.CallAsync(new PlayerEnterVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this));
-                        break;
+                    await _eventManager.CallAsync(new PlayerEnterVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this, vent));
+                    break;
                 }
 
                 case RpcCalls.SetPet:
