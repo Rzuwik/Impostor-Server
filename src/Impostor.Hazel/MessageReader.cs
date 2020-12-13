@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Buffers;
 using System.Buffers.Binary;
 using System.Runtime.CompilerServices;
@@ -151,28 +151,35 @@ namespace Impostor.Hazel
 
         public uint ReadPackedUInt32()
         {
-            bool readMore = true;
-            int shift = 0;
-            uint output = 0;
-
-            while (readMore)
+            try
             {
-                byte b = FastByte();
-                if (b >= 0x80)
-                {
-                    readMore = true;
-                    b ^= 0x80;
-                }
-                else
-                {
-                    readMore = false;
-                }
+                bool readMore = true;
+                int shift = 0;
+                uint output = 0;
 
-                output |= (uint)(b << shift);
-                shift += 7;
+                while (readMore)
+                {
+                    byte b = FastByte();
+                    if (b >= 0x80)
+                    {
+                        readMore = true;
+                        b ^= 0x80;
+                    }
+                    else
+                    {
+                        readMore = false;
+                    }
+
+                    output |= (uint)(b << shift);
+                    shift += 7;
+                }
+                return output;
             }
-
-            return output;
+            catch(IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.ToString());
+                return 0x80;
+            }
         }
 
         public void CopyTo(IMessageWriter writer)

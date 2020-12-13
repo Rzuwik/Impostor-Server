@@ -26,7 +26,7 @@ namespace Impostor.Server.Net.Inner.Objects
             _eventManager = eventManager;
             _game = game;
 
-            Physics = ActivatorUtilities.CreateInstance<InnerPlayerPhysics>(serviceProvider, this);
+            Physics = ActivatorUtilities.CreateInstance<InnerPlayerPhysics>(serviceProvider, this, _game);
             NetworkTransform = ActivatorUtilities.CreateInstance<InnerCustomNetworkTransform>(serviceProvider, this, _game);
 
             Components.Add(this);
@@ -48,8 +48,6 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public override async ValueTask HandleRpc(ClientPlayer sender, ClientPlayer? target, RpcCalls call, IMessageReader reader)
         {
-            _logger.LogInformation(call.ToString());
-            _logger.LogInformation(call.GetType().Name);
             switch (call)
             {
                 // Play an animation.
