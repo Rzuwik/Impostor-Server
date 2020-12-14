@@ -383,23 +383,39 @@ namespace Impostor.Server.Net.Inner.Objects
                 {
                     if (!sender.IsOwner(this))
                     {
-                        Console.WriteLine("a");
                         throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.EnterVent)} to an unowned {nameof(InnerPlayerControl)}");
                     }
 
                     if (target != null)
                     {
-                        Console.WriteLine("b");
                         throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.EnterVent)} to a specific player instead of broadcast");
                     }
 
                     var vent = reader.ReadByte();
-
                     _logger.LogInformation(reader.ToString());
-
                     _logger.LogInformation(vent.ToString());
 
                     await _eventManager.CallAsync(new PlayerEnterVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this, vent));
+                    break;
+                }
+
+                case RpcCalls.ExitVent:
+                {
+                    if (!sender.IsOwner(this))
+                    {
+                        throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.ExitVent)} to an unowned {nameof(InnerPlayerControl)}");
+                    }
+
+                    if (target != null)
+                    {
+                        throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.ExitVent)} to a specific player instead of broadcast");
+                    }
+
+                    var vent = reader.ReadByte();
+                    _logger.LogInformation(reader.ToString());
+                    _logger.LogInformation(vent.ToString());
+
+                    await _eventManager.CallAsync(new PlayerLeaveVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this, vent));
                     break;
                 }
 
