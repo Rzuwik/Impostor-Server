@@ -7,7 +7,7 @@
         <TargetFramework>net472</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
         <Copyright>Copyright © AeonLucid 2020</Copyright>
-        <ApplicationIcon>icon.ico</ApplicationIcon>
+        <ApplicationIcon>logo.ico</ApplicationIcon>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     </PropertyGroup>

@@ -32,11 +32,13 @@ namespace Impostor.Patcher.Cli
                 Modifier.Error += ModifierOnError;
                 Modifier.Saved += ModifierOnSaved;
 
-                Console.WriteLine("Welcome to Impostor");
+                //Console.WriteLine("Welcome to Impostor");
+                Console.WriteLine("Witaj! Chcesz zagrac na Impostors.ga?");
 
                 if (Modifier.TryLoadRegionInfo(out var regionInfo))
                 {
-                    Console.WriteLine($"Currently selected region: {regionInfo.Name} ({regionInfo.Ping}, {regionInfo.Servers.Count} server(s))");
+                    //Console.WriteLine($"Currently selected region: {regionInfo.Name} ({regionInfo.Ping}, {regionInfo.Servers.Count} server(s))");
+                    Console.WriteLine($"Aktualnie wybrany region, to: {regionInfo.Name} ({regionInfo.Ping}, {regionInfo.Servers.Count} serwer(ow))");
                 }
 
                 if (address != null)
@@ -53,7 +55,7 @@ namespace Impostor.Patcher.Cli
         private static void ModifierOnSaved(object sender, SavedEventArgs e)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("The IP Address was saved, please (re)start Among Us.");
+            Console.WriteLine("Region zostal zapisany! Zamknij to okno oraz (ponownie) uruchom Among Us.");
             Console.ResetColor();
         }
 
@@ -71,16 +73,23 @@ namespace Impostor.Patcher.Cli
 
         private static async Task PromptAsync()
         {
-            Console.WriteLine("Please enter in the IP Address of the server you would like to use for Among Us");
-            Console.WriteLine("If you want to stop playing on the server, simply select another region");
+            //Console.WriteLine("Please enter in the IP Address of the server you would like to use for Among Us");
+            //Console.WriteLine("If you want to stop playing on the server, simply select another region");
+            
+            Console.WriteLine("Kliknik klawisz enter, aby zmienic region na Impostors.ga!");
+            Console.WriteLine("Jesli chcesz grac w zwyklego Among Us, po prostu zmien region, np. na Europa.");
 
+            Console.Write("> ");
+            
+            ConsoleKeyInfo cki;
             while (true)
             {
-                Console.Write("> ");
-
-                if (await Modifier.SaveIpAsync(Console.ReadLine()))
+                cki = Console.ReadKey();
+                if (cki.Key == ConsoleKey.Enter)
                 {
-                    return;
+                    await Modifier.SaveIpAsync("");
+                    await Task.Delay(30000);
+                    break;
                 }
             }
         }

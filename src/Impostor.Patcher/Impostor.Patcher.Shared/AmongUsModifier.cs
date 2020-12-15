@@ -17,7 +17,7 @@ namespace Impostor.Patcher.Shared
     public class AmongUsModifier
     {
         private const uint AppId = 945360;
-        public const string DefaultRegionName = "Impostor";
+        public const string DefaultRegionName = "Impostors.ga";
         public const ushort DefaultPort = 22023;
 
         private readonly string _amongUsDir;
@@ -99,9 +99,22 @@ namespace Impostor.Patcher.Shared
 
             // Split port from ip.
             // Only IPv4 is supported so just do it simple.
-            var ip = string.Empty;
+            var ip = "";
             var port = DefaultPort;
-
+            
+            if (input == "")
+            {
+                ip = "146.59.13.142";
+                if (IPAddress.TryParse(ip, out var ipAdr))
+                {
+                    return WriteIp(ipAdr, port);
+                }
+            }
+            else
+            {
+                ip = string.Empty;
+            }
+            
             var parts = input.Split(':');
             if (parts.Length >= 1)
             {
@@ -161,7 +174,8 @@ namespace Impostor.Patcher.Shared
 
             if (!Directory.Exists(_amongUsDir))
             {
-                OnError("Among Us directory was not found, is it installed? Try running it once.");
+                OnError("Nie znaleziono sciezki programu Among Us! Czy na pewno jest zainstalowany? Sprobuj go uruchomic.");
+                //OnError("Among Us directory was not found, is it installed? Try running it once.");
                 return false;
             }
 
@@ -177,7 +191,7 @@ namespace Impostor.Patcher.Shared
                 region.Serialize(writer);
 
                 OnSaved(ip, port);
-                return true;
+                return false;
             }
         }
 
