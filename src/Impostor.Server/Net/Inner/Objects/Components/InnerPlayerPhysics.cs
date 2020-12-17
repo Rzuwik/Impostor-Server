@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Impostor.Api;
 using Impostor.Api.Events.Managers;
+using Impostor.Api.Innersloth;
 using Impostor.Api.Net;
 using Impostor.Api.Net.Messages;
 using Impostor.Server.Events.Player;
@@ -51,17 +52,7 @@ namespace Impostor.Server.Net.Inner.Objects.Components
             var ventId = reader.ReadPackedUInt32();
             var ventEnter = call == RpcCalls.EnterVent;
 
-            if (ventEnter == true)
-            {
-                // Vent Enter
-                await _eventManager.CallAsync(new PlayerEnterVentEvent(_game, _game.GetClientPlayer(this.OwnerId), _playerControl, ventId));
-            }
-            else
-            {
-                // Vent Leave
-                await _eventManager.CallAsync(new PlayerLeaveVentEvent(_game, _game.GetClientPlayer(this.OwnerId), _playerControl, ventId));
-            }
-
+            await _eventManager.CallAsync(new PlayerVentEvent(_game, _game.GetClientPlayer(this.OwnerId), _playerControl, (VentLocation)ventId, ventEnter)); 
             return;
         }
 

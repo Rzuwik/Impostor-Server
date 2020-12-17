@@ -26,7 +26,7 @@ namespace Impostor.Server.Net.Inner.Objects
             _eventManager = eventManager;
             _game = game;
 
-            Physics = ActivatorUtilities.CreateInstance<InnerPlayerPhysics>(serviceProvider, this, _game);
+            Physics = ActivatorUtilities.CreateInstance<InnerPlayerPhysics>(serviceProvider, this, _eventManager, _game);
             NetworkTransform = ActivatorUtilities.CreateInstance<InnerCustomNetworkTransform>(serviceProvider, this, _game);
 
             Components.Add(this);
@@ -379,7 +379,7 @@ namespace Impostor.Server.Net.Inner.Objects
                     break;
                 }
 
-                case RpcCalls.EnterVent:
+                /*case RpcCalls.EnterVent:
                 {
                     if (!sender.IsOwner(this))
                     {
@@ -395,7 +395,7 @@ namespace Impostor.Server.Net.Inner.Objects
                     _logger.LogInformation(reader.ToString());
                     _logger.LogInformation(vent.ToString());
 
-                    await _eventManager.CallAsync(new PlayerEnterVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this, vent));
+                    await _eventManager.CallAsync(new PlayerVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this, vent));
                     break;
                 }
 
@@ -417,7 +417,7 @@ namespace Impostor.Server.Net.Inner.Objects
 
                     await _eventManager.CallAsync(new PlayerLeaveVentEvent(_game, _game.GetClientPlayer(this.OwnerId), this, vent));
                     break;
-                }
+                }*/
 
                 case RpcCalls.SetPet:
                 {
