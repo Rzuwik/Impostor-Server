@@ -21,6 +21,11 @@ namespace Impostor.Api.Games
 
         IEnumerable<IClientPlayer> Players { get; }
 
+        /// <summary>
+        /// Gets or sets display name on game list.
+        /// </summary>
+        string? DisplayName { get; set; }
+
         IPEndPoint PublicIp { get; }
 
         int PlayerCount { get; }
