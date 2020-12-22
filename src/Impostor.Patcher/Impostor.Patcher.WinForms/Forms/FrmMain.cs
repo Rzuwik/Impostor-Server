@@ -38,7 +38,7 @@ namespace Impostor.Patcher.WinForms.Forms
 
         private void ModifierOnSaved(object sender, SavedEventArgs e)
         {
-            MessageBox.Show("The IP Address was saved, please (re)start Among Us.", "Success",
+            MessageBox.Show("Zapisano! Proszę (ponownie) uruchom Among Us.", "Success",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 

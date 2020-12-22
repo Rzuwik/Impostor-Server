@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Impostor.Api;
 using Impostor.Api.Events.Managers;
@@ -46,8 +47,9 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public InnerPlayerInfo PlayerInfo { get; internal set; }
 
-        public override async ValueTask HandleRpc(ClientPlayer sender, ClientPlayer? target, RpcCalls call, IMessageReader reader)
+        public override async ValueTask<bool> HandleRpc(ClientPlayer sender, ClientPlayer? target, RpcCalls call, IMessageReader reader)
         {
+            var cancelled = false;
             switch (call)
             {
                 // Play an animation.
@@ -313,10 +315,19 @@ namespace Impostor.Server.Net.Inner.Objects
                     {
                         throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.SendChat)} to a specific player instead of broadcast");
                     }
-
+                    
                     var chat = reader.ReadString();
 
-                    await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
+                    if (chat.StartsWith("/"))
+                    {
+                        cancelled = true;
+                        await _eventManager.CallAsync(new PlayerCommandEvent(_game, sender, this, chat));
+                    }
+                    else
+                    {
+                        await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
+                    }
+                    
                     break;
                 }
 
@@ -467,6 +478,8 @@ namespace Impostor.Server.Net.Inner.Objects
                     break;
                 }
             }
+
+            return cancelled;
         }
 
         public override ValueTask<bool> SerializeAsync(IMessageWriter writer, bool initialState)

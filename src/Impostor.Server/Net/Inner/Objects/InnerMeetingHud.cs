@@ -46,7 +46,7 @@ namespace Impostor.Server.Net.Inner.Objects
                 .ToArray();
         }
 
-        public override async ValueTask HandleRpc(ClientPlayer sender, ClientPlayer? target, RpcCalls call, IMessageReader reader)
+        public override async ValueTask<bool> HandleRpc(ClientPlayer sender, ClientPlayer? target, RpcCalls call, IMessageReader reader)
         {
             switch (call)
             {
@@ -126,6 +126,8 @@ namespace Impostor.Server.Net.Inner.Objects
                     break;
                 }
             }
+
+            return true;
         }
 
         public override ValueTask<bool> SerializeAsync(IMessageWriter writer, bool initialState)

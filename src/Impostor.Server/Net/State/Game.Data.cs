@@ -195,6 +195,8 @@ namespace Impostor.Server.Net.State
             // Find target player.
             ClientPlayer target = null;
 
+            var cancelled = false;
+
             if (toPlayer)
             {
                 var targetId = parent.ReadPackedInt32();
@@ -247,7 +249,7 @@ namespace Impostor.Server.Net.State
                         if (_allObjectsFast.TryGetValue(netId, out var obj))
                         {
                             // _logger.LogInformation($"Got obj: {obj}");
-                            await obj.HandleRpc(sender, target, (RpcCalls) reader.ReadByte(), reader);
+                            cancelled = await obj.HandleRpc(sender, target, (RpcCalls) reader.ReadByte(), reader);
                         }
                         else
                         {
@@ -408,7 +410,7 @@ namespace Impostor.Server.Net.State
                 }
             }
 
-            return true;
+            return !cancelled;
         }
 
         private bool AddNetObject(InnerNetObject obj)

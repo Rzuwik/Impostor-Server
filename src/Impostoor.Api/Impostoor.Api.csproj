@@ -6,7 +6,7 @@
     <LangVersion>9</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
-    <Version>1.4.12</Version>
+    <Version>1.4.13</Version>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <AssemblyName>Impostoor.Api</AssemblyName>
@@ -15,7 +15,7 @@
     <Description>An api library for Impostor, an Among Us private server. You need this package to write plugins for Impostor.</Description>
     <PackageId>Impostoor.Api</PackageId>
     <PackageTags></PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/Impostors-ga/Impostor/dev/docs/images/logo_64.png</PackageIconUrl>
+    <PackageIconUrl>https://impostors.ga/img/logo.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Impostors-ga/Impostor</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Impostors-ga/Impostor</RepositoryUrl>
