@@ -317,16 +317,17 @@ namespace Impostor.Server.Net.Inner.Objects
                     }
                     
                     var chat = reader.ReadString();
-
-                    if (chat.StartsWith("/"))
-                    {
-                        cancelled = true;
-                        await _eventManager.CallAsync(new PlayerCommandEvent(_game, sender, this, chat));
-                    }
-                    else
-                    {
-                        await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
-                    }
+                    
+                    await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
+//                     if (chat.StartsWith("/"))
+//                     {
+//                         cancelled = true;
+//                         await _eventManager.CallAsync(new PlayerCommandEvent(_game, sender, this, chat));
+//                     }
+//                     else
+//                     {
+//                         await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
+//                     }
                     
                     break;
                 }
