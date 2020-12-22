@@ -9,6 +9,6 @@ namespace Impostor.Api.Net.Inner.Objects
 
         TaskTypes Type { get; }
 
-        bool Complete { get; }
+        bool Complete { get; set; }
     }
 }

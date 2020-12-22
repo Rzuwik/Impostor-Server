@@ -10,7 +10,7 @@ namespace Impostor.Server.Net.Inner.Objects
         {
             public uint Id { get; internal set; }
 
-            public bool Complete { get; internal set; }
+            public bool Complete { get; set; }
 
             public TaskTypes Type { get; internal set; }
 

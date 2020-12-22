@@ -15,8 +15,16 @@ namespace Impostor.Server.Events.Player
             ClientPlayer = clientPlayer;
             PlayerControl = playerControl;
             Message = message;
-            Command = message.Replace("/", string.Empty).Trim().Split(" ")[0];
-            Args = message.Replace("/", string.Empty).Trim().Split(" ").Skip(1).ToArray();
+            if (message.Contains(" "))
+            {
+                Command = message.Replace("/", string.Empty).Trim().Split(" ")[0];
+                Args = message.Replace("/", string.Empty).Trim().Split(" ").Skip(1).ToArray();
+            }
+            else
+            {
+                Command = message.Replace("/", string.Empty);
+                Args = new string[] {};
+            }
         }
 
         public IGame Game { get; }

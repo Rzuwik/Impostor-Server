@@ -35,7 +35,7 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public DeathReason LastDeathReason { get; internal set; }
 
-        public List<InnerGameData.TaskInfo> Tasks { get; internal set; }
+        public List<InnerGameData.TaskInfo> Tasks { get; set; }
 
         public DateTimeOffset LastMurder { get; set; }
 
