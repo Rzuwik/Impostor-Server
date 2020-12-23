@@ -315,20 +315,20 @@ namespace Impostor.Server.Net.Inner.Objects
                     {
                         throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.SendChat)} to a specific player instead of broadcast");
                     }
-                    
+
                     var chat = reader.ReadString();
-                    
-                    await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
-//                     if (chat.StartsWith("/"))
-//                     {
-//                         cancelled = true;
-//                         await _eventManager.CallAsync(new PlayerCommandEvent(_game, sender, this, chat));
-//                     }
-//                     else
-//                     {
-//                         await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
-//                     }
-                    
+
+                    // await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
+                    if (chat.StartsWith("/"))
+                    {
+                        cancelled = true;
+                        await _eventManager.CallAsync(new PlayerCommandEvent(_game, sender, this, chat));
+                    }
+                    else
+                    {
+                        await _eventManager.CallAsync(new PlayerChatEvent(_game, sender, this, chat));
+                    }
+
                     break;
                 }
 
