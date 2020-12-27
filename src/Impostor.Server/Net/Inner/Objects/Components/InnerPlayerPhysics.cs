@@ -53,7 +53,7 @@ namespace Impostor.Server.Net.Inner.Objects.Components
             var ventEnter = call == RpcCalls.EnterVent;
 
             await _eventManager.CallAsync(new PlayerVentEvent(_game, _game.GetClientPlayer(this.OwnerId), _playerControl, (VentLocation)ventId, ventEnter)); 
-            return true;
+            return false;
         }
 
         public override ValueTask<bool> SerializeAsync(IMessageWriter writer, bool initialState)

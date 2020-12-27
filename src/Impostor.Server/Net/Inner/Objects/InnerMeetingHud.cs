@@ -127,7 +127,7 @@ namespace Impostor.Server.Net.Inner.Objects
                 }
             }
 
-            return true;
+            return false;
         }
 
         public override ValueTask<bool> SerializeAsync(IMessageWriter writer, bool initialState)
