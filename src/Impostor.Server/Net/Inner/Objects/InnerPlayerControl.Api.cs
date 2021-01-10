@@ -147,5 +147,23 @@ namespace Impostor.Server.Net.Inner.Objects
                 await task.SetCompleteAsync();
             }
         }
+        
+        public async ValueTask SetExiledAsync()
+        {
+            if (PlayerInfo.IsDead)
+            {
+                return;
+            }
+
+            // Update player.
+            Die(DeathReason.Exile);
+
+            // Send RPC.
+            using var writer = _game.StartRpc(NetId, RpcCalls.Exiled);
+            await _game.FinishRpcAsync(writer);
+
+            // Notify plugins.
+            await _eventManager.CallAsync(new PlayerExileEvent(_game, _game.GetClientPlayer(OwnerId), this));
+        }
     }
 }

@@ -119,5 +119,12 @@ namespace Impostor.Api.Net.Inner.Objects
         /// </summary>
         /// <returns>Task that must be awaited.</returns>
         ValueTask SetAllTasksCompleteAsync();
+
+        /// <summary>
+        ///     Sets the current to be exiled. This doesn't produce a body to be reported.
+        ///     Visible to all players.
+        /// </summary>
+        /// <returns>Task that must be awaited.</returns>
+        ValueTask SetExiledAsync();
     }
 }
