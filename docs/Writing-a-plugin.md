@@ -54,7 +54,7 @@ You only have to follow the instructions of one below.
 
 ### Quick
 
-Install the `Impostors.Ga.Api` NuGet package.  
+Install the `Impostoor.Api` NuGet package.  
 Make sure to get a prerelease if you are writing a plugin for a dev release of the server.
 
 ### Visual Studio
@@ -63,19 +63,19 @@ Make sure to get a prerelease if you are writing a plugin for a dev release of t
 2. Click `Manage NuGet Packages`.
 3. Click `Browse`.
 4. Next to the search bar, enable `Include prerelease`.
-5. Search for `Impostors.Ga.Api`.
-6. Click the `Impostors.Ga.Api` result and press install on the right side.
+5. Search for `Impostoor.Api`.
+6. Click the `Impostoor.Api` result and press install on the right side.
 
 ### Dotnet CLI
 
-> Make sure to grab the latest (pre-)release version from NuGet [here](https://www.nuget.org/packages/Impostors.Ga.Api).
+> Make sure to grab the latest (pre-)release version from NuGet [here](https://www.nuget.org/packages/Impostoor.Api).
 
 1. Open your project folder in command prompt / bash.
-2. Run `dotnet add package Impostor.Api -v "1.2.0-ci.58"`.
+2. Run `dotnet add package Impostoor.Api -v "1.4.20"`.
 
 ## 4. The plugin class
 
-Now the `Impostor.Api` is installed, you need to create a class for your plugin. A plugin **must** contain exactly one. See the code below for an example.
+Now the `Impostoor.Api` is installed, you need to create a class for your plugin. A plugin **must** contain exactly one. See the code below for an example.
 
 ```csharp
 using System.Threading.Tasks;
@@ -314,30 +314,26 @@ Constantly copying the plugin dll to your server directory can be pretty annoyin
     "Paths": [
       "D:\\Projects\\Impostor\\src\\Impostor.Plugins.Example\\bin\\Debug\\netstandard2.1"
     ],
-    "Libraries": []
+    "LibraryPaths": []
   }
 }
 ```
 
 ### Using other libraries
 
-Sometimes you need to use libraries that the original Impostor server does not provide. The dll files of these libraries must be placed in the `libraries` folder next to the server executable. You could also provide them by modifying the `PluginLoader.Libraries` option in the `config.json`, similarly to the `PluginLoader.Paths` option.
+Sometimes you need to use libraries that the original Impostor server does not provide. The dll files of these libraries must be placed in the `libraries` folder next to the server executable. You could also provide them by modifying the `PluginLoader.LibraryPaths` option in the `config.json`, similarly to the `PluginLoader.Paths` option.
 
 ### Impostor versions
 
-It is important to use the correct versions when working with `Impostor.Api` prereleases and the `Impostor` dev builds to reduce the chances of mismatching assemblies. 
-
-**Example** 
-
-The prerelease `Impostor.Api` package `1.2.0-ci.54` belongs to build `54` on AppVeyor, which can be found here https://ci.appveyor.com/project/Impostor/Impostor/build/54. Notice the `54` on the end of the url.
+It is important to use the correct versions when working with `Impostoor.Api` prereleases and the `Impostor` dev builds to reduce the chances of mismatching assemblies. 
 
 ## 9. Missing/invalid data or want more functions?
 
-The `Impostor.Api` is currently in beta. There are a lot of things still missing and we would like to hear from you what you need to develop a plugin.
+The `Impostoor.Api` is currently in beta. There are a lot of things still missing and we would like to hear from you what you need to develop a plugin.
 
 Create an issue:
 
-- [Suggest a function](https://github.com/Impostor/Impostor/issues/new?template=3--api-suggestion.md)
-- [Data is invalid](https://github.com/Impostor/Impostor/issues/new?template=4--api-invalid.md)
-- [Data is unavailable](https://github.com/Impostor/Impostor/issues/new?template=5--api-missing.md)
-- [Other](https://github.com/Impostor/Impostor/issues/new?template=6--api-other.md)
+- [Suggest a function](https://github.com/Impostors-ga/Impostor/issues/new?template=3--api-suggestion.md)
+- [Data is invalid](https://github.com/Impostors-ga/Impostor/issues/new?template=4--api-invalid.md)
+- [Data is unavailable](https://github.com/Impostors-ga/Impostor/issues/new?template=5--api-missing.md)
+- [Other](https://github.com/Impostor/Impostors-ga/issues/new?template=6--api-other.md)
