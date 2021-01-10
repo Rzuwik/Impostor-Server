@@ -6,7 +6,7 @@
     <LangVersion>9</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
-    <Version>1.4.18</Version>
+    <Version>1.4.19</Version>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <AssemblyName>Impostoor.Api</AssemblyName>

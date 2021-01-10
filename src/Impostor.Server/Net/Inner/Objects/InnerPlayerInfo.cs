@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Impostor.Api.Events.Managers;
 using Impostor.Api.Games;
 using Impostor.Api.Innersloth;
 using Impostor.Api.Net.Messages;
+using Impostor.Server.Net.State;
 
 namespace Impostor.Server.Net.Inner.Objects
 {
@@ -54,7 +56,7 @@ namespace Impostor.Server.Net.Inner.Objects
             throw new NotImplementedException();
         }
 
-        public void Deserialize(IMessageReader reader)
+        public void Deserialize(IMessageReader reader, IEventManager eventManager, Game game)
         {
             PlayerName = reader.ReadString();
             ColorId = reader.ReadByte();
@@ -68,7 +70,7 @@ namespace Impostor.Server.Net.Inner.Objects
             var taskCount = reader.ReadByte();
             for (var i = 0; i < taskCount; i++)
             {
-                Tasks[i] ??= new InnerGameData.TaskInfo();
+                Tasks[i] ??= new InnerGameData.TaskInfo(eventManager, game, Controller);
                 Tasks[i].Deserialize(reader);
             }
         }
