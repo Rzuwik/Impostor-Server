@@ -147,7 +147,7 @@ namespace Impostor.Server.Net.Inner.Objects
                 await task.SetCompleteAsync();
             }
         }
-        
+
         public async ValueTask SetExiledAsync()
         {
             if (PlayerInfo.IsDead)
