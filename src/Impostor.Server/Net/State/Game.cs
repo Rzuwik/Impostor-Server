@@ -58,7 +58,7 @@ namespace Impostor.Server.Net.State
         public GameCode Code { get; }
 
         public bool IsPublic { get; private set; }
-        
+
         public string? DisplayName { get; set; }
 
         public int HostId { get; private set; }
