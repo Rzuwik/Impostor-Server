@@ -1,16 +1,16 @@
-# Impostor
+# Impostor-Server
 
-[![Discord](https://img.shields.io/badge/Discord-chat-blue?style=flat-square)](https://discord.gg/Mk3w6Tb)
-[![AppVeyor](https://img.shields.io/appveyor/build/Impostor/Impostor/dev?style=flat-square)](https://ci.appveyor.com/project/Impostor/Impostor/branch/dev)
+[![Discord](https://img.shields.io/badge/Discord-chat-blue?style=for-the-badge)](https://discord.gg/pM7YxX7tZF)
+[![AppVeyor](https://img.shields.io/appveyor/build/xIgreq/impostor-server?style=for-the-badge)](https://ci.appveyor.com/project/xIgreq/impostor-server/branch/dev)
 
-Impostor is one of the first **Among Us** private servers, written in C#. 
+Impostor-Server is public fork of official [Impostor Server Software](https://github.com/Impostor/Impostor), written in C#. 
 
-We support Steam, Itch, Android and iOS. The latest version supported is `2020.9.22`, the `dev` build currently supports `2020.11.17`.
+We support Steam, Itch, Android and iOS. The latest version supported is `2020.9.07`, the `dev` build currently supports `2020.12.05`.
 
 | Impostor version | Among Us version | Experimental | Download |
 |-|-|-|-|
-| 1.1.0 | 2020.09.07 - 2020.09.22 | No | [![Download](https://img.shields.io/badge/Download-v1.1.0-blue?style=flat-square)](https://github.com/Impostor/Impostor/releases/tag/v1.1.0) |
-| 1.2.2 | 2020.09.22 - 2020.11.17 | Yes | [![Download](https://img.shields.io/badge/Download-v1.2.2-blue?style=flat-square)](https://ci.appveyor.com/project/Impostor/Impostor/branch/dev/artifacts) |
+| 1.1.0 | 2020.09.07 - 2020.09.22 | No | [![Download](https://img.shields.io/badge/Download-v1.1.0-blue?style=flat-square)](https://github.com/Impostors-ga/Impostor-Server/releases/tag/v1.1.0) |
+| 1.4.20 | 2020.09.07 - 2020.12.05 | No | [![Download](https://img.shields.io/badge/Download-v1.4.20-green?style=flat-square)](https://github.com/Impostors-ga/Impostor-Server/releases/tag/v1.4.20) |
 
 ## Features
 
@@ -26,24 +26,16 @@ If you just want to play on a server hosted by someone else, you need to follow 
 
 #### Windows
 
-1. Find the [latest release](https://github.com/AeonLucid/Impostor/releases/latest).
-2. Download `Impostor-Client-win-x64.zip`.
-3. Extract the zip.
-4. Run `Impostor.Client.exe`.
-5. Follow the instructions inside the application.
-
-![Client](docs/images/client.jpg)
-
-If you do not wish to execute any programs. Follow the instructions in [this website](https://impostor.github.io/Impostor)
+Follow the instructions in [this website](https://impostors-ga.github.io/Impostor-Server)
 
 #### Android
 
 ##### Android 10 and below.
-1. Go to [this website](https://impostor.github.io/Impostor) **(ON YOUR MOBILE DEVICE)**
+1. Go to [this website](https://impostors-ga.github.io/Impostor-Server) **(ON YOUR MOBILE DEVICE)**
 2. Follow the instructions listed there.
 
 ##### Android 11.
-1. Connect your phone to a computer. Go to [this website](https://impostor.github.io/Impostor) on the computer and follow the steps 1 and 2 to generate a `regionInfo.dat` file.
+1. Connect your phone to a computer. Go to [this website](https://impostors-ga.github.io/Impostor-Server) on the computer and follow the steps 1 and 2 to generate a `regionInfo.dat` file.
 2. Instead of following the next steps, open the phone's internal storage on your computer and navigate to `/sdcard/Android/data/com.innersloth.spacemafia/files`.
 3. Copy the generated `regionInfo.dat` file into the `files` folder you just navigated to.
 
@@ -70,3 +62,4 @@ This software is distributed under the **GNU GPLv3** License.
 ## Credits
 
 - [willardf/Hazel-Networking](https://github.com/willardf/Hazel-Networking)
+- [Impostor/Impostor](https://github.com/Impostor/Impostor)

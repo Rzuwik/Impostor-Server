@@ -10,7 +10,7 @@ This documentation will go over building both the [Server](#building-the-server)
 You need to clone Impostor with all submodules.
 
 ```bash
-git clone --recursive https://github.com/AeonLucid/Impostor.git
+git clone --recursive https://github.com/Impostors-ga/Impostor-Server.git
 ```
 
 If you already have cloned Impostor but have errors related to Hazel, run the following.

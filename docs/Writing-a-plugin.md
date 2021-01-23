@@ -333,7 +333,7 @@ The `Impostoor.Api` is currently in beta. There are a lot of things still missin
 
 Create an issue:
 
-- [Suggest a function](https://github.com/Impostors-ga/Impostor/issues/new?template=3--api-suggestion.md)
-- [Data is invalid](https://github.com/Impostors-ga/Impostor/issues/new?template=4--api-invalid.md)
-- [Data is unavailable](https://github.com/Impostors-ga/Impostor/issues/new?template=5--api-missing.md)
-- [Other](https://github.com/Impostor/Impostors-ga/issues/new?template=6--api-other.md)
+- [Suggest a function](https://github.com/Impostors-ga/Impostor-Server/issues/new?template=3--api-suggestion.md)
+- [Data is invalid](https://github.com/Impostors-ga/Impostor-Server/issues/new?template=4--api-invalid.md)
+- [Data is unavailable](https://github.com/Impostors-ga/Impostor-Server/issues/new?template=5--api-missing.md)
+- [Other](https://github.com/Impostors-ga/Impostor-Server-Server/issues/new?template=6--api-other.md)
