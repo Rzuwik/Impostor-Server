@@ -42,6 +42,11 @@ namespace Impostor.Api.Net.Inner.Objects
         bool IsDead { get; }
 
         /// <summary>
+        ///     Gets a value indicating whether the player is in vent.
+        /// </summary>
+        bool InVent { get; }
+
+        /// <summary>
         ///     Gets the reason why the player is dead in the current game.
         /// </summary>
         DeathReason LastDeathReason { get; }

@@ -52,7 +52,9 @@ namespace Impostor.Server.Net.Inner.Objects.Components
             var ventId = reader.ReadPackedUInt32();
             var ventEnter = call == RpcCalls.EnterVent;
 
-            await _eventManager.CallAsync(new PlayerVentEvent(_game, _game.GetClientPlayer(this.OwnerId), _playerControl, (VentLocation)ventId, ventEnter)); 
+            sender.Character.PlayerInfo.InVent = ventEnter;
+
+            await _eventManager.CallAsync(new PlayerVentEvent(_game, _game.GetClientPlayer(this.OwnerId), _playerControl, (VentLocation)ventId, ventEnter));
             return false;
         }
 

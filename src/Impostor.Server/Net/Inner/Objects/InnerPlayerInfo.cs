@@ -35,6 +35,8 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public bool IsDead { get; internal set; }
 
+        public bool InVent { get; internal set; }
+
         public DeathReason LastDeathReason { get; internal set; }
 
         public List<InnerGameData.TaskInfo> Tasks { get; set; }
@@ -67,6 +69,7 @@ namespace Impostor.Server.Net.Inner.Objects
             Disconnected = (flag & 1) > 0;
             IsImpostor = (flag & 2) > 0;
             IsDead = (flag & 4) > 0;
+            InVent = false;
             var taskCount = reader.ReadByte();
             for (var i = 0; i < taskCount; i++)
             {
