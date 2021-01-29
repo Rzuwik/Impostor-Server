@@ -109,6 +109,14 @@ namespace Impostor.Server.Net.State
 
                 case InnerMeetingHud meetingHud:
                 {
+                    foreach (var player in this._players)
+                    {
+                        if (player.Value.Character != null)
+                        {
+                            player.Value.Character.PlayerInfo.InVent = false;
+                        }
+                    }
+
                     await _eventManager.CallAsync(new MeetingStartedEvent(this, meetingHud));
                     break;
                 }
