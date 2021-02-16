@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Impostor.Api.Events.Managers;
 using Impostor.Api.Games.Managers;
 using Impostor.Api.Innersloth;
 using Impostor.Api.Plugins;
+using Impostor.Plugins.Example.Handlers;
 using Microsoft.Extensions.Logging;
 
 namespace Impostor.Plugins.Example
@@ -16,7 +19,7 @@ namespace Impostor.Plugins.Example
         private readonly ILogger<ExamplePlugin> _logger;
         private readonly IGameManager _gameManager;
 
-        public ExamplePlugin(ILogger<ExamplePlugin> logger, IGameManager gameManager)
+        public ExamplePlugin(ILogger<ExamplePlugin> logger, IEventManager eventManager, IGameManager gameManager)
         {
             _logger = logger;
             _gameManager = gameManager;

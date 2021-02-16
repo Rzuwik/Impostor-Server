@@ -5,11 +5,13 @@ using Impostor.Api.Events;
 using Impostor.Api.Events.Player;
 using Impostor.Api.Events.Ship;
 using Impostor.Api.Innersloth;
+using Microsoft.Extensions.Logging;
 
 namespace Impostor.Plugins.Example.Handlers
 {
     public class ShipEventListener : IEventListener
     {
+        
         [EventListener(EventPriority.Monitor)]
         public void OnGame(IShipEvent e)
         {
