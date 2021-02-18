@@ -52,6 +52,7 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public override async ValueTask<bool> HandleRpc(ClientPlayer sender, ClientPlayer? target, RpcCalls call, IMessageReader reader)
         {
+            var toReturn = false;
             switch (call)
             {
                 case RpcCalls.CloseDoorsOfType:
@@ -67,6 +68,20 @@ namespace Impostor.Server.Net.Inner.Objects
                     }
 
                     var systemType = (SystemTypes)reader.ReadByte();
+
+                    if (_game.SystemCooldown.TryGetValue(systemType, out var val))
+                    {
+                        if (DateTimeOffset.UtcNow.Subtract(val).TotalSeconds < 10)
+                        {
+                            throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.CloseDoorsOfType)} too fast.");
+                        }
+
+                        _game.SystemCooldown.TryUpdate(systemType, DateTimeOffset.UtcNow, val);
+                    }
+                    else
+                    {
+                        _game.SystemCooldown.TryAdd(systemType, DateTimeOffset.UtcNow);
+                    }
 
                     await _eventManager.CallAsync(new ShipDoorsCloseEvent(_game, this, sender, systemType));
 
@@ -103,6 +118,20 @@ namespace Impostor.Server.Net.Inner.Objects
                             {
                                 _logger.LogWarning("{0}: Unknown sabotage type {1}", nameof(InnerShipStatus), flag);
                                 break;
+                            }
+
+                            if (_game.SystemCooldown.TryGetValue(systemType, out var val))
+                            {
+                                if (DateTimeOffset.UtcNow.Subtract(val).TotalSeconds < 20)
+                                {
+                                    throw new ImpostorCheatException($"Client sent {nameof(RpcCalls.CloseDoorsOfType)} too fast.");
+                                }
+
+                                _game.SystemCooldown.TryUpdate(systemType, DateTimeOffset.UtcNow, val);
+                            }
+                            else
+                            {
+                                _game.SystemCooldown.TryAdd(systemType, DateTimeOffset.UtcNow);
                             }
 
                             await _eventManager.CallAsync(new ShipSabotageEvent(_game, this, sender, (SystemTypes)flag));
@@ -156,7 +185,7 @@ namespace Impostor.Server.Net.Inner.Objects
                 }
             }
 
-            return default;
+            return toReturn;
         }
 
         public override ValueTask<bool> SerializeAsync(IMessageWriter writer, bool initialState)
