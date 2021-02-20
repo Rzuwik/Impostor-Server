@@ -320,7 +320,6 @@ namespace Impostor.Server.Net.Inner.Objects
                     break;
                 }
 
-                // TODO: (ANTICHEAT) Cooldown check?
                 case RpcCalls.MurderPlayer:
                 {
                     if (!sender.IsOwner(this))

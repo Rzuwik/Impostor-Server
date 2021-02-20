@@ -1,4 +1,6 @@
-﻿namespace Impostor.Api.Innersloth
+﻿using Impostor.Api.Events.Ship;
+
+namespace Impostor.Api.Innersloth
 {
     public enum SystemTypes : byte
     {
@@ -34,7 +36,7 @@
         /// <summary>
         /// Top decontam on Polus
         /// </summary>
-        Decontamination2 = 26,
+        TopDecontaminationPolus = 26,
         Outside = 27,
         Specimens = 28,
         BoilerRoom = 29

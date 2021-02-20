@@ -40,6 +40,7 @@ namespace Impostor.Server.Net.State
             _serviceProvider = serviceProvider;
             _gameManager = gameManager;
             _players = new ConcurrentDictionary<int, ClientPlayer>();
+            SystemCooldown = new ConcurrentDictionary<SystemTypes, DateTimeOffset>();
             _bannedIps = new HashSet<IPAddress>();
 
             PublicIp = publicIp;
@@ -70,6 +71,8 @@ namespace Impostor.Server.Net.State
         public GameOptionsData Options { get; }
 
         public IDictionary<object, object> Items { get; }
+
+        internal ConcurrentDictionary<SystemTypes, DateTimeOffset> SystemCooldown { get; set; }
 
         public int PlayerCount => _players.Count;
 
